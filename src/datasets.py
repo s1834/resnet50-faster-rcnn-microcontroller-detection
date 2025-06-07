@@ -67,7 +67,7 @@ class MicrocontrollerDataset(Dataset):
         target["image_id"] = image_id
 
         if self.transforms:
-            sample = self.transforms(image = image_resized, bboxes = target['boxes'],labels = labels)
+            sample = self.transforms(image = image_resized, bboxes = target['boxes'],labels = labels.tolist())
             image_resized = sample['image']
             target['boxes'] = torch.Tensor(sample['bboxes'])
             
